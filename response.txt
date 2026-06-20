@@ -1,0 +1,56 @@
+## 1st run: python src/ingest.py --dry-run
+Found 5 transcript file(s):
+ - bac_q1_2026.txt
+ - gs_q1_2026.txt
+ - jpmc_q1_2026.txt
+ - ms_q1_2026.txt
+ - wfc_q1_2026.txt
+
+ bac_q1_2026.txt: 72,309 chars 36 chunks
+ gs_q1_2026.txt: 73,515 chars 36 chunks
+ jpmc_q1_2026.txt: 101,466 chars 39 chunks
+ ms_q1_2026.txt: 41,983 chars 21 chunks
+ wfc_q1_2026.txt: 66,592 chars 31 chunks
+
+Total chunks: 163
+Total tokens to embed: 80,747
+Estimated cost: $0.0016
+
+--dry-run set. Stopping before API calls.
+
+## 2nd run: python src/ingest.py          
+Found 5 transcript file(s):
+ - bac_q1_2026.txt
+ - gs_q1_2026.txt
+ - jpmc_q1_2026.txt
+ - ms_q1_2026.txt
+ - wfc_q1_2026.txt
+
+ bac_q1_2026.txt: 72,309 chars 36 chunks
+ gs_q1_2026.txt: 73,515 chars 36 chunks
+ jpmc_q1_2026.txt: 101,466 chars 39 chunks
+ ms_q1_2026.txt: 41,983 chars 21 chunks
+ wfc_q1_2026.txt: 66,592 chars 31 chunks
+
+Total chunks: 163
+Total tokens to embed: 80,747
+Estimated cost: $0.0016
+
+Embedding 163 chunks in batches of 100...
+ [100/163] stored
+ [163/163] stored
+
+Done. 163 chunks stored in 5.2s.
+Collection 'bank_earnings' now has 163 items.
+
+--- Smoke test: retrieving top 3 chunks for sample query ---
+Query: What did the CEO say about credit risk and loan loss provisions?
+
+Result 1 bank=wfc chunk=9 dist=0.854
+ are reported in our 10-Qs and 10-K, which we think is a better way to understand our portfolio. We also report loans to nondepository financial institutions in our call reports. Since we often get questions on how these disclosures differ, we have included a reconciliation in our appendix to illust...
+
+Result 2 bank=gs chunk=16 dist=0.871
+ are in the alternative space.And we have a big diversified business that we've been growing and it'sproviding part of the ballast to our overall GBM revenues. But if we look backover the course of history on our FICC financing activities, our life-to-daterealized losses, if you exclude some dir...
+
+Result 3 bank=bac chunk=9 dist=0.893
+ commercial lending portfolios. Overall, as you can see, ourcredit results remain benign, and we continue to feel good about the quality of our portfolio.Turning to Slide 12 for some other credit metrics and a couple of comments here. Commercial reservablecriticized exposure declined to roughly $...
