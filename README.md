@@ -30,3 +30,10 @@ cp .env.example .env
 # Edit .env , paste your OpenAI API key
 python src/hello_openai.py
 ```
+
+## License
+MIT - see [LICENSE](./LICENSE) for details.
+
+## DATA
+
+This projects ingests publicly available earnings call transcripts from SEC EDGAR and bank investor relations sites. Source attribution is preserved in each transcript file. Original content remains the property of its publishers; this project's MIT license applies only to the code, not the indexed transcripts.
