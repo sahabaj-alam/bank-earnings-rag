@@ -9,7 +9,7 @@ Reading and comparing what bank executives say in earnings calls is slow. This a
 
 ## Stack
 - Python 3.13
-- OpenAI (gpt-40-mini for chat, text-embedding-3-small for embeddings)
+- OpenAI (gpt-4o-mini for chat, text-embedding-3-small for embeddings)
 - ChromaDB (local vector store)
 - Streamlit (UI + deployment)
 
@@ -23,7 +23,7 @@ _Coming Week 3._
 
 ## Local setup (macOS)
 ```bash
-python3 - venv venv
+python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 cp .env.example .env
@@ -34,6 +34,6 @@ python src/hello_openai.py
 ## License
 MIT - see [LICENSE](./LICENSE) for details.
 
-## DATA
+## Data
 
-This projects ingests publicly available earnings call transcripts from SEC EDGAR and bank investor relations sites. Source attribution is preserved in each transcript file. Original content remains the property of its publishers; this project's MIT license applies only to the code, not the indexed transcripts.
+This project ingests publicly available earnings call transcripts from SEC EDGAR and bank investor relations sites. Source attribution is preserved in each transcript file. Original content remains the property of its publishers; this project's MIT license applies only to the code, not the indexed transcripts.
