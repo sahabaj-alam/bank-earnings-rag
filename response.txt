@@ -54,3 +54,88 @@ Result 2 bank=gs chunk=16 dist=0.871
 
 Result 3 bank=bac chunk=9 dist=0.893
  commercial lending portfolios. Overall, as you can see, ourcredit results remain benign, and we continue to feel good about the quality of our portfolio.Turning to Slide 12 for some other credit metrics and a couple of comments here. Commercial reservablecriticized exposure declined to roughly $...
+
+## 3rd Run: python src/query.py "What did JPMC say about credit risk?"
+Loaded collection 'bank_earnings' with 163 chunks.
+
+
+========================================================================
+Q: What did JPMC say about credit risk?
+========================================================================
+
+JPMorgan Chase (JPMC) emphasized a disciplined approach to credit risk 
+management during their Q1 2026 earnings call. Jamie Dimon, the CEO, 
+stated, "we are quite disciplined on credit," indicating that the bank 
+selectively turns down opportunities based on factors like covenants and
+ underwriting standards. He noted, "we're perfectly willing to have our 
+balance sheet go down" if the credit terms are unfavorable, highlighting
+ their commitment to maintaining credit quality over growth.
+
+Dimon also
+ mentioned that while there are concerns about credit conditions, he 
+does not believe there is systemic risk at the moment. He remarked, "the
+ actual credit hasn't gotten that much worse," although he acknowledged 
+that there are "pockets where it has." JPMC will continue to monitor the
+ credit landscape closely, maintaining that they are prepared to adjust 
+their lending practices as necessary.
+
+------------------------------------------------------------------------
+Sources:
+ [1] jpmc q1_2026 chunk=37 (dist=0.733)
+ [2] jpmc q1_2026 chunk=17 (dist=0.764)
+
+ ## 4th run: python src/query.py "How did the major banks describe the consumer financial health?"
+Loaded collection 'bank_earnings' with 163 chunks.
+
+
+========================================================================
+Q: How did the major banks describe the consumer financial health?
+========================================================================
+
+In Q1 2026, Wells Fargo described consumer financial health as 
+resilient, noting that consumer net loan charge-offs increased modestly 
+to 78 basis points of average loans, primarily due to seasonally higher 
+credit card losses. However, compared to the previous year, these 
+charge-offs declined by eight basis points, indicating improvements 
+across consumer portfolios and continued net recoveries in the 
+residential mortgage sector. Wells Fargo emphasized that they have not 
+observed recent deterioration or meaningful shifts in trends, suggesting
+ stability in consumer financial health [wfc].
+
+Bank of America also 
+highlighted positive aspects of consumer financial health, reporting a 
+4% year-over-year growth in consumer loan balances, driven by a 3% 
+increase in credit card growth. They noted that the consumer segment is 
+beginning to show signs of recovery, with four consecutive quarters of 
+year-over-year deposit growth, indicating a strengthening consumer base.
+ The bank pointed out that favorable conditions such as good 
+unemployment rates, stable home prices, and elevated savings levels 
+contribute to a broad-based lending environment [bac].
+
+Overall, both 
+banks indicated a stable to improving consumer financial health, with 
+Wells Fargo focusing on resilience and stability, while Bank of America 
+highlighted growth and recovery in consumer lending and deposits.
+
+------------------------------------------------------------------------
+Sources:
+ [1] wfc q1_2026 chunk=9 (dist=0.811)
+ [2] bac q1_2026 chunk=6 (dist=0.879)
+ [3] bac q1_2026 chunk=14 (dist=0.963)
+ ## 5th run: python src/query.py "What is the weather forecast for Mumbai next week?"
+Loaded collection 'bank_earnings' with 163 chunks.
+
+
+========================================================================
+Q: What is the weather forecast for Mumbai next week?
+========================================================================
+
+The provided excerpts do not contain any information regarding the 
+weather forecast for Mumbai next week. Therefore, I cannot provide an 
+answer to your question based on the available data.
+
+------------------------------------------------------------------------
+Sources:
+ [1] bac q1_2026 chunk=34 (dist=1.649)
+ [2] wfc q1_2026 chunk=27 (dist=1.652)
+ [3] wfc q1_2026 chunk=24 (dist=1.656)
