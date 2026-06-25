@@ -139,3 +139,25 @@ Sources:
  [1] bac q1_2026 chunk=34 (dist=1.649)
  [2] wfc q1_2026 chunk=27 (dist=1.652)
  [3] wfc q1_2026 chunk=24 (dist=1.656)
+
+for this quetion: How did major banks describe consumer financial health?
+
+Answer
+In Q1 2026, Wells Fargo indicated that consumer financial health remains resilient, noting that consumer net loan charge-offs increased only modestly to 78 basis points of average loans, which reflects seasonally higher credit card losses. However, compared to the previous year, charge-offs declined by eight basis points, suggesting improvements across consumer portfolios and continued net recoveries in residential mortgages. They have not observed recent deterioration or meaningful shifts in trends, indicating a stable outlook for consumer financial health [wfc].
+
+Bank of America also expressed a positive view of consumer financial health, reporting a 4% year-over-year growth in consumer loan balances, driven by a 3% increase in credit card growth. They highlighted that the consumer segment is beginning to show signs of recovery, with four consecutive quarters of year-over-year deposit growth. The bank noted that factors such as good unemployment rates, stable home prices, and elevated savings contribute to a favorable lending environment, suggesting that the consumer is in a good place financially [bac].
+
+Overall, both banks reflect a cautious optimism regarding consumer financial health, with Wells Fargo emphasizing stability and resilience, while Bank of America points to growth and recovery signs in consumer lending and deposits.
+
+📚 Sources (3 excerpts used)
+[1] wfc • q1_2026 • chunk=9 • distance=0.834
+
+https://www.fool.com/earnings/call-transcripts/2026/04/14/wells-fargo-wfc-q1-2026-earnings-call-transcript/
+
+[2] bac • q1_2026 • chunk=6 • distance=0.901
+
+https://investor.bankofamerica.com/events-and-presentations/events/detail/20260415-q1-2026-bank-of-america-earnings-conference-call
+
+[3] bac • q1_2026 • chunk=14 • distance=0.968
+
+https://investor.bankofamerica.com/events-and-presentations/events/detail/20260415-q1-2026-bank-of-america-earnings-conference-call
