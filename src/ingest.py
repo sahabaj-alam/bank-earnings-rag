@@ -6,7 +6,7 @@ ChromaDB collection at ./chroma_db/.
 
 Run:
     python src/ingest.py                #full run (calls OpenAI, -50.001)
-    python src/ingest.py-dry-run        #chunk only, no API/DB calls
+    python src/ingest.py -dry-run        #chunk only, no API/DB calls
     python src/ingest.py --reset        #wipe collection and re-ingest
 """
 

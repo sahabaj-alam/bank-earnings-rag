@@ -2,7 +2,7 @@
 
 A personal project that lets you ask natural-language questions across earnings call transcripts from major US banks (JPMorgan Chase, Goldman Sachs, Morgan Stanley, Bank of America, Wells Fargo).
 
-**Status:** Week 2 / 4 - scaffolding (Jun 27, 2026)
+**Status:** Week 2 / 4 - ready to deploy (Jun 27, 2026)
 
 ## Why
 Reading and comparing what bank executives say in earnings calls is slow. This app indexes public transcripts and lets you query them with citations.
@@ -35,7 +35,7 @@ python src/hello_openai.py
 
 ![Bank Earnings RAG UI](docs/screenshot_ui.png)
 
-*Streamlit interfaces - ask a question, get a cited answers with source excerpts.*
+*Streamlit interface - ask a question, get a cited answer with source excerpts.*
 
 ## License
 MIT - see [LICENSE](./LICENSE) for details.
