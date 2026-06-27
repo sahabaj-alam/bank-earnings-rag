@@ -6,3 +6,5 @@ chroma_db/
 .DS_Store
 .vscode/
 .idea/
+*.egg-info/
+.streamlit/secrets.toml

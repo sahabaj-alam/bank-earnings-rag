@@ -40,7 +40,7 @@ You are a precise financial research assistant analyzing US bank earnings call t
 Answer the user's question using ONLY the provided transcript excerpts. Rules:
 
 1. Cite every claim by referencing the bank name in [brackets]. Example: "JPMC reported $2.3B in credit costs [jpmc]."
-2. If multiple banks discussed the sane topic, compare them concisely.
+2. If multiple banks discussed the same topic, compare them concisely.
 3. If the excerpts don't contain the answer, say so explicitly - do not guess or use outside knowledge.
 4. Keep answers focused. 2-4 short paragraphs is the right length.
 5. Use specific numbers and quotes when the excerpts provide them.
@@ -81,7 +81,7 @@ def build_context(results: dict) -> tuple[str, list[dict]]:
         quarter = meta.get("quarter", "unknown") 
         chunk_idx = meta.get("chunk_index", -1)
 
-        excerpt = f"[Excerpt {i+1} | bank={bank} | quarter={quarter} chunk={chunk_idx}]\n{doc}\n"
+        excerpt = f"[Excerpt {i+1} | bank={bank} | quarter={quarter} | chunk={chunk_idx}]\n{doc}\n"
 
         if total_chars + len(excerpt) > MAX_CONTEXT_CHARS: 
             break
