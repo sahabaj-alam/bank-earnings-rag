@@ -47,19 +47,47 @@ def get_openai_client() -> OpenAI:
 
 @st.cache_resource
 def get_collection():
-    if not Path(CHROMA_DIR).exists():
-        st.error(f"ChromaDB not found at {CHROMA_DIR}/. Run `python src/ingest.py` first.")
-        st.stop()
+    """Get or auto-bootstrap the ChromaDB collection."""
     chroma_client = chromadb.PersistentClient(
         path=str(CHROMA_DIR), 
         settings=Settings(anonymized_telemetry=False),
     )
-    try:
-        return chroma_client.get_collection (COLLECTION_NAME)
-    except Exception:
-        st.error(f"Collection '{COLLECTION_NAME}' not found. Run ingestion first.")
-        st.stop()
 
+    # Try to load existing collection
+    try:
+        collection = chroma_client.get_collection(COLLECTION_NAME)
+        if collection.count() > 0:
+            return collection
+    except Exception:
+        pass # Collection doesn't exist yet; bootstrap below
+
+    # Bootstrap: run ingestion if collection is missing or empty 
+    st.info(
+        "First-time setup: building vector index from transcripts. "
+        "This takes ~30 seconds and only happens once per deployment."
+    )
+    progress = st.progress(0, text="Loading ingestion module...")
+
+    try:
+        from src.ingest import main as ingest_main
+        import sys
+
+        #Save original argv, set to no-arg run (full ingestion)
+        original_argv = sys.argv 
+        sys.argv = ["ingest.py"]
+        try: 
+            progress.progress(20, text="Chunking transcripts...") 
+            ingest_main() 
+            progress.progress (100, text="Done!")
+        finally:
+            sys.argv = original_argv
+
+        # Reload collection after ingestion
+        return chroma_client.get_collection(COLLECTION_NAME)
+    except Exception as e:
+        progress.empty()
+        st.error(f"Bootstrap failed: {e}")
+        st.stop()
 
 # --- UI --------------------------------------------------------------
 
@@ -98,18 +126,17 @@ EXAMPLES = [
 
 st.markdown("**Try a sample question:**")
 cols = st.columns (len(EXAMPLES))
-selected_example = None
 for i, ex in enumerate (EXAMPLES):
     if cols[i].button(f"{i+1}", help=ex, use_container_width=True):
-        selected_example = ex
+        st.session_state.question_text = ex
+        # Clear the text_area widget state so it re-reads from question_text
+        if "question_input" in st.session_state:
+            del st.session_state["question_input"]
+        st.rerun()
 
 # Initialize session state for the question
 if "question_text" not in st.session_state:
     st.session_state.question_text = ""
-
-# If user clicked an example button, update session state
-if selected_example:
-    st.session_state.question_text = selected_example
 
 #Question input - bound to session state via key
 question = st.text_area(
