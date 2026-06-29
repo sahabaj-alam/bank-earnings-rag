@@ -124,24 +124,24 @@ EXAMPLES = [
     "What were the main concerns analysts raised during Q&A?",
 ]
 
+# Initialize the text_area's keyed state once, before the widget is created
+if "question_input" not in st.session_state:
+    st.session_state.question_input = ""
+
 st.markdown("**Try a sample question:**")
 cols = st.columns (len(EXAMPLES))
 for i, ex in enumerate (EXAMPLES):
     if cols[i].button(f"{i+1}", help=ex, use_container_width=True):
-        st.session_state.question_text = ex
-        # Clear the text_area widget state so it re-reads from question_text
-        if "question_input" in st.session_state:
-            del st.session_state["question_input"]
+        # Write directly to the widget's own key, then rerun so the
+        # text_area picks it up on the next render.
+        st.session_state.question_input = ex
         st.rerun()
 
-# Initialize session state for the question
-if "question_text" not in st.session_state:
-    st.session_state.question_text = ""
-
-#Question input - bound to session state via key
+# Qestion input - state lives entirely in st.session_state["question_input"].
+# No value = here on purpose: with a key set, Streamlit treats the keyed
+# session_state as the single source of truth.
 question = st.text_area(
     "Your question:",
-    value=st.session_state.question_text,
     height=80,
     placeholder="e.g. What did Jamie Dimon say about the economic outlook?",
     key="question_input"
