@@ -61,33 +61,36 @@ def get_collection():
     except Exception:
         pass # Collection doesn't exist yet; bootstrap below
 
-    # Bootstrap: run ingestion if collection is missing or empty 
-    st.info(
-        "First-time setup: building vector index from transcripts. "
-        "This takes ~30 seconds and only happens once per deployment."
-    )
-    progress = st.progress(0, text="Loading ingestion module...")
+    # Bootstrap: run ingestion if collection is missing or empty
+    bootstrap_box = st.empty() # placeholder we can clear later
+    with bootstrap_box.container(): 
+        st.info(
+            "First-time setup: building vector index from transcripts. "
+            "This takes ~30 seconds and only happens once per deployment."
+        )
+        progress = st.progress(0, text="Loading ingestion module...")
 
-    try:
-        from src.ingest import main as ingest_main
-        import sys
+        try:
+            from src.ingest import main as ingest_main
+            import sys
 
-        #Save original argv, set to no-arg run (full ingestion)
-        original_argv = sys.argv 
-        sys.argv = ["ingest.py"]
-        try: 
-            progress.progress(20, text="Chunking transcripts...") 
-            ingest_main() 
-            progress.progress (100, text="Done!")
-        finally:
-            sys.argv = original_argv
+            original_argv = sys.argv 
+            sys.argv = ["ingest.py"]
+            try: 
+                progress.progress(20, text="Chunking transcripts...") 
+                ingest_main() 
+                progress.progress (100, text="Done!")
+            finally:
+                sys.argv = original_argv
 
-        # Reload collection after ingestion
-        return chroma_client.get_collection(COLLECTION_NAME)
-    except Exception as e:
-        progress.empty()
-        st.error(f"Bootstrap failed: {e}")
-        st.stop()
+            collection = chroma_client.get_collection(COLLECTION_NAME)
+        except Exception as e:
+            st.error(f"Bootstrap failed: {e}")
+            st.stop()
+
+    # Clear the bootstrap UI now that the index is ready
+    bootstrap_box.empty()
+    return collection
 
 # --- UI --------------------------------------------------------------
 
