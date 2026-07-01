@@ -2,7 +2,7 @@
 
 A personal project that lets you ask natural-language questions across earnings call transcripts from major US banks (JPMorgan Chase, Goldman Sachs, Morgan Stanley, Bank of America, Wells Fargo).
 
-**Status:** Week 2 / 4 - ready to deploy (Jun 27, 2026)
+**Status:** Week 3 / 4 - deployed and live (July 1, 2026)
 
 ## Why
 Reading and comparing what bank executives say in earnings calls is slow. This app indexes public transcripts and lets you query them with citations.
@@ -19,7 +19,11 @@ This is a **personal project**, built on my own time, on my own equipment, using
 It is **not affiliated with, endorsed by, or related to my employer or any bank** whose data is referenced.
 
 ## Live demo
-_Coming Week 3._
+
+🔗 **[bank-earnings-rag-demo.streamlit.app](https://bank-earnings-rag-demo.streamlit.app)**
+
+Ask questions about Q1 2026 earnings calls from 5 major US banks. Try the sample
+questions or type your own. Answers are grounded in transcripts and cite sources.
 
 ## Local setup (macOS)
 ```bash
